@@ -53,6 +53,9 @@ call vundle#begin()
     Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
     Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 
+    "-------------------=== Julia  ===-----------------------------
+    Plugin 'JuliaEditorSupport/julia-vim'
+
 call vundle#end()                           " required
 filetype on
 filetype plugin on
@@ -100,9 +103,11 @@ set secure                                  " prohibit .vimrc files to execute s
 tab sball
 set switchbuf=useopen
 set laststatus=2
+nmap <F8> :TagbarToggle<CR>
 nmap <F9> :bprev<CR>
 nmap <F10> :bnext<CR>
 nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
+nmap <leader>t :TagbarOpenAutoClose<CR>
 
 "" Search settings
 "=====================================================
@@ -121,7 +126,7 @@ let g:airline_powerline_fonts=1
 "" TagBar settings
 "=====================================================
 let g:tagbar_autofocus=0
-let g:tagbar_width=42
+let g:tagbar_width=36
 autocmd BufEnter *.py :call tagbar#autoopen(0)
 autocmd BufWinLeave *.py :TagbarClose
 
