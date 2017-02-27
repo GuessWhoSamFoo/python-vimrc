@@ -30,6 +30,22 @@ You can install it by using CLI just have next command executed:
 During execution of init script do not worry about error messages. When it
 occurs just press enter and wait till all plugins are installed.
 
+.. code::
+
+  git clone https://github.com/powerline/fonts.git
+  cd fonts && sh ./install.sh
+
+This installs the fonts necessary for airline to display symbols properly.
+Then in the terminal, go to Edit > Profile Preferences and change custom font
+to Ubuntu Mono derivative Powerline Regular.
+
+If YouCompleteMe server shuts down because of conda installation path,
+create symlink or reinstall on conda environment.
+
+.. code::
+
+  conda install libgcc
+
 Autocompletion
 --------------
 
