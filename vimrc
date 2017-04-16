@@ -27,6 +27,7 @@ call vundle#begin()
     Plugin 'scrooloose/nerdtree'                " Project and file navigation
     Plugin 'majutsushi/tagbar'                  " Class/module browser
     Plugin 'kien/ctrlp.vim'                     " Fast transitions on project files
+    Plugin 'tpope/vim-fugitive'                 " Wrapper for git
 
     "-------------------=== Other ===-------------------------------
     Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
@@ -127,7 +128,7 @@ let g:airline_powerline_fonts=1
 "=====================================================
 let g:tagbar_autofocus=0
 let g:tagbar_width=36
-autocmd BufEnter *.py :call tagbar#autoopen(0)
+"autocmd BufEnter *.py :call tagbar#autoopen(0)
 autocmd BufWinLeave *.py :TagbarClose
 
 "=====================================================
@@ -205,7 +206,9 @@ augroup vimrc_autocmds
     autocmd FileType python,rst,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
     autocmd FileType python,rst,c,cpp match Excess /\%81v.*/
     autocmd FileType python,rst,c,cpp set nowrap
-    autocmd FileType python,rst,c,cpp set colorcolumn=80
+    autocmd FileType python,rst,c,cpp let &colorcolumn=join(range(81,999),",")
+    autocmd FileType python,rst,c,cpp highlight ColorColumn ctermbg=235 guibg=#2c2d27
+    autocmd FileType python,rst,c,cpp let &colorcolumn="80,".join(range(120,999),",")
 augroup END
 
 " code folding
@@ -236,6 +239,11 @@ set completeopt-=preview
 
 let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 
 nmap <leader>g :YcmCompleter GoTo<CR>
 nmap <leader>d :YcmCompleter GoToDefinition<CR>
+
+" logfiles
+let g:ycm_server_use_vim_stdout = 0
+let g:ycm_server_keep_logfiles = 1
