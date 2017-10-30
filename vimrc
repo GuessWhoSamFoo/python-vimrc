@@ -14,6 +14,8 @@ let $vundle=$vimhome."/bundle/Vundle.vim"
 " Be iMproved
 set nocompatible
 
+set relativenumber
+
 "=====================================================
 "" Vundle settings
 "=====================================================
